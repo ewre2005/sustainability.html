@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSVTU | Self-Sustainability</title>
+<style>
+:root{--primary:#123b6d;--secondary:#1d6fa5;--accent:#f3a712;--light:#f5f8fc;--dark:#172b3f;--muted:#607080;--white:#fff;--border:#dce6ef;--shadow:0 10px 28px rgba(18,59,109,.10)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:"Segoe UI",Arial,sans-serif;background:var(--light);color:var(--dark);line-height:1.7}.container{width:min(1200px,92%);margin:auto}
+header{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000}.nav{min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:25px}.brand{display:flex;align-items:center;gap:14px}.logo{width:52px;height:52px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;border:3px solid #e8f0f7}.brand h3{color:var(--primary);font-size:18px}.brand p{color:var(--muted);font-size:12px}nav{display:flex;gap:25px}nav a{color:var(--primary);text-decoration:none;font-weight:600;font-size:14px}nav a:hover{color:var(--accent)}
+.hero{background:linear-gradient(120deg,#0b294d,#1d6fa5);color:white;padding:78px 0}.hero-inner{max-width:950px}.hero-label{display:inline-block;padding:6px 15px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);border-radius:30px;text-transform:uppercase;letter-spacing:1px;font-size:12px;font-weight:700;margin-bottom:18px}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.12;margin-bottom:20px}.hero h1 span{color:#ffd36a}.hero p{color:#e9f2f8;font-size:18px;max-width:920px}
+.intro{background:white;padding:70px 0}.intro p{font-size:17px;color:#33485c;margin-bottom:22px}.intro p:last-child{margin-bottom:0}
+.section-title{text-align:center;margin-bottom:45px}.section-title .small{color:var(--secondary);font-size:12px;text-transform:uppercase;font-weight:800;letter-spacing:1.4px}.section-title h2{color:var(--primary);font-size:clamp(28px,4vw,40px);margin-top:6px}
+.foundations{padding:75px 0}.foundation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.foundation-card{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:.25s ease}.foundation-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(18,59,109,.15)}.foundation-head{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:24px;min-height:105px;display:flex;align-items:center}.foundation-head h3{font-size:20px;line-height:1.35}.foundation-body{padding:25px}.foundation-body p{color:var(--muted);font-size:14.5px}
+.conclusion{background:linear-gradient(135deg,#123b6d,#0b294d);color:white;padding:75px 0}.conclusion .section-title h2{color:white}.conclusion p{max-width:1050px;margin:auto;color:#e4edf5;font-size:17px;text-align:center}footer{background:#081d35;color:#b5c3d0;padding:25px 0;text-align:center;font-size:13px}footer strong{color:white}
+@media(max-width:950px){.foundation-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.nav{min-height:68px}nav{display:none}.hero{padding:60px 0}.hero p{font-size:16px}.intro,.foundations,.conclusion{padding:55px 0}.foundation-grid{grid-template-columns:1fr}.intro p,.conclusion p{font-size:15.5px}}
+
+/* ===== ATTRACTIVE VISUAL ENHANCEMENT ===== */
+body{
+    background:
+        radial-gradient(circle at 5% 8%,rgba(29,111,165,.08),transparent 24%),
+        radial-gradient(circle at 95% 40%,rgba(243,167,18,.07),transparent 22%),
+        #f5f8fc;
+}
+
+header{
+    box-shadow:0 4px 22px rgba(18,59,109,.07);
+    backdrop-filter:blur(12px);
+    background:rgba(255,255,255,.94);
+}
+
+.logo{
+    box-shadow:0 8px 22px rgba(18,59,109,.22);
+    position:relative;
+}
+
+.logo:after{
+    content:"";
+    position:absolute;
+    inset:-7px;
+    border:1px solid rgba(243,167,18,.45);
+    border-radius:50%;
+}
+
+.brand h3{letter-spacing:.2px}
+
+.hero{
+    min-height:520px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(120deg,rgba(7,31,57,.97),rgba(18,76,116,.94)),
+        radial-gradient(circle at 82% 22%,rgba(243,167,18,.45),transparent 20%);
+}
+
+.hero:before,
+.hero:after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+}
+
+.hero:before{
+    width:520px;
+    height:520px;
+    right:-190px;
+    top:-190px;
+    border:95px solid rgba(255,255,255,.045);
+}
+
+.hero:after{
+    width:300px;
+    height:300px;
+    left:-170px;
+    bottom:-210px;
+    background:rgba(243,167,18,.10);
+    border:55px solid rgba(255,255,255,.035);
+}
+
+.hero-inner{
+    position:relative;
+    z-index:2;
+}
+
+.hero-label{
+    box-shadow:0 8px 25px rgba(0,0,0,.13);
+}
+
+.hero h1{
+    text-shadow:0 5px 25px rgba(0,0,0,.18);
+}
+
+.hero p{
+    border-left:3px solid rgba(243,167,18,.9);
+    padding-left:18px;
+}
+
+.intro{
+    position:relative;
+}
+
+.intro:before{
+    content:"";
+    display:block;
+    width:75px;
+    height:4px;
+    background:linear-gradient(90deg,var(--accent),var(--secondary));
+    border-radius:10px;
+    margin:0 auto 40px;
+}
+
+.intro p:first-child:first-letter{
+    color:var(--primary);
+    font-size:2.8em;
+    font-weight:800;
+    float:left;
+    line-height:.8;
+    padding:8px 8px 0 0;
+}
+
+.foundations{
+    background:
+        linear-gradient(rgba(245,248,252,.95),rgba(245,248,252,.95)),
+        repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(18,59,109,.025) 21px);
+}
+
+.section-title h2{
+    position:relative;
+    display:inline-block;
+}
+
+.section-title h2:after{
+    content:"";
+    width:55px;
+    height:4px;
+    display:block;
+    margin:12px auto 0;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--accent),var(--secondary));
+}
+
+.foundation-grid{
+    counter-reset:foundation;
+}
+
+.foundation-card{
+    position:relative;
+    border:0;
+    box-shadow:0 10px 30px rgba(18,59,109,.09);
+}
+
+.foundation-card:before{
+    counter-increment:foundation;
+    content:"0" counter(foundation);
+    position:absolute;
+    right:16px;
+    top:13px;
+    z-index:3;
+    color:rgba(255,255,255,.25);
+    font-size:32px;
+    font-weight:900;
+    line-height:1;
+}
+
+.foundation-head{
+    min-height:125px;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,rgba(18,59,109,.98),rgba(29,111,165,.96));
+}
+
+.foundation-head:after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    right:-45px;
+    bottom:-75px;
+    border:28px solid rgba(243,167,18,.20);
+}
+
+.foundation-head h3{
+    position:relative;
+    z-index:2;
+    max-width:85%;
+}
+
+.foundation-body{
+    min-height:255px;
+    background:linear-gradient(180deg,#fff,#fbfdff);
+}
+
+.foundation-body p{
+    text-align:justify;
+}
+
+.foundation-card:hover .foundation-head{
+    background:linear-gradient(135deg,#0d3158,#1d6fa5);
+}
+
+.foundation-card:hover .foundation-body{
+    background:#fff;
+}
+
+.conclusion{
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 10% 20%,rgba(243,167,18,.12),transparent 20%),
+        radial-gradient(circle at 90% 80%,rgba(29,111,165,.35),transparent 25%),
+        linear-gradient(135deg,#071e36,#123b6d);
+}
+
+.conclusion:before{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    right:-120px;
+    top:-120px;
+    border:60px solid rgba(255,255,255,.045);
+    border-radius:50%;
+}
+
+.conclusion .container{
+    position:relative;
+    z-index:2;
+}
+
+.conclusion p{
+    background:rgba(255,255,255,.075);
+    border:1px solid rgba(255,255,255,.13);
+    padding:28px 32px;
+    border-radius:18px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+footer{
+    border-top:3px solid rgba(243,167,18,.55);
+}
+
+@media(max-width:700px){
+    .hero{min-height:460px}
+    .foundation-body{min-height:auto}
+    .conclusion p{padding:22px 20px}
+}
+
+
+/* ===== DYNAMIC + JUSTIFIED PRESENTATION ===== */
+
+.intro p,
+.foundation-body p,
+.conclusion p{
+    text-align:justify;
+    text-justify:inter-word;
+}
+
+/* Animated page background */
+body{
+    background:
+      radial-gradient(circle at 10% 15%,rgba(29,111,165,.08),transparent 23%),
+      radial-gradient(circle at 90% 55%,rgba(243,167,18,.07),transparent 20%),
+      #f5f8fc;
+    background-attachment:fixed;
+}
+
+/* Dynamic hero */
+.hero{
+    min-height:560px;
+    display:flex;
+    align-items:center;
+    isolation:isolate;
+}
+
+.hero:before{
+    animation:orbitOne 16s linear infinite;
+}
+
+.hero:after{
+    animation:floatGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes orbitOne{
+    from{transform:rotate(0deg) scale(1)}
+    to{transform:rotate(360deg) scale(1.05)}
+}
+
+@keyframes floatGlow{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(35px,-25px) scale(1.12)}
+}
+
+/* Hero content entrance */
+.hero-label{
+    animation:fadeDown .8s ease both;
+}
+
+.hero h1{
+    animation:fadeUp .9s .12s ease both;
+}
+
+.hero p{
+    animation:fadeUp .9s .24s ease both;
+}
+
+@keyframes fadeDown{
+    from{opacity:0;transform:translateY(-18px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(25px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+/* Foundation cards */
+.foundation-card{
+    opacity:0;
+    animation:cardReveal .75s ease forwards;
+    transform-origin:center bottom;
+}
+
+.foundation-card:nth-child(1){animation-delay:.10s}
+.foundation-card:nth-child(2){animation-delay:.20s}
+.foundation-card:nth-child(3){animation-delay:.30s}
+.foundation-card:nth-child(4){animation-delay:.40s}
+.foundation-card:nth-child(5){animation-delay:.50s}
+.foundation-card:nth-child(6){animation-delay:.60s}
+
+@keyframes cardReveal{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.foundation-card{
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s ease;
+}
+
+.foundation-card:hover{
+    transform:translateY(-10px) scale(1.012);
+    box-shadow:0 22px 48px rgba(18,59,109,.18);
+}
+
+.foundation-head h3{
+    transition:transform .35s ease;
+}
+
+.foundation-card:hover .foundation-head h3{
+    transform:translateX(4px);
+}
+
+/* Animated heading underline */
+.section-title h2:after{
+    transform:scaleX(.65);
+    transform-origin:center;
+    transition:transform .5s ease;
+}
+
+.section-title:hover h2:after{
+    transform:scaleX(1.25);
+}
+
+/* Text readability */
+.foundation-body{
+    position:relative;
+}
+
+.foundation-body:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:0;
+    background:linear-gradient(var(--accent),var(--secondary));
+    transition:height .5s ease;
+}
+
+.foundation-card:hover .foundation-body:before{
+    height:100%;
+}
+
+/* Conclusion dynamic glow */
+.conclusion{
+    background-size:180% 180%;
+    animation:gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* Smooth link movement */
+nav a{
+    position:relative;
+    transition:color .25s ease;
+}
+
+nav a:after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    background:var(--accent);
+    transition:all .25s ease;
+    transform:translateX(-50%);
+}
+
+nav a:hover:after{
+    width:100%;
+}
+
+/* Respect accessibility */
+@media(prefers-reduced-motion:reduce){
+    *,
+    *:before,
+    *:after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+    }
+}
+
+@media(max-width:700px){
+    .hero{min-height:480px}
+    .foundation-card:hover{
+        transform:translateY(-4px);
+    }
+}
+
+</style>
+
+<style>
+.foundation-card,.intro p,.conclusion p{
+    animation:riseIn .7s ease both;
+}
+.foundation-card:nth-child(2){animation-delay:.08s}
+.foundation-card:nth-child(3){animation-delay:.16s}
+.foundation-card:nth-child(4){animation-delay:.24s}
+.foundation-card:nth-child(5){animation-delay:.32s}
+.foundation-card:nth-child(6){animation-delay:.40s}
+@keyframes riseIn{
+    from{opacity:0;transform:translateY(18px)}
+    to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+    *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+
+</head>
+<body>
+<header><div class="container nav"><div class="brand"><div class="logo">CSVTU</div><div><h3>CSVTU Bhilai</h3><p>Self-Sustainability &amp; Institutional Growth</p></div></div><nav><a href="#vision">Vision</a><a href="#foundations">Foundations</a><a href="#conclusion">Conclusion</a></nav></div></header>
+<section class="hero"><div class="container hero-inner"><div class="hero-label">Chhattisgarh Swami Vivekanand Technical University</div><h1>Self-Sustainability &amp; <span>Strategic Growth</span></h1><p>A sustainable and future-ready institutional ecosystem built through education, research, innovation, consultancy, skill development, industry engagement and responsible resource management.</p></div></section>
+<section class="intro" id="vision"><div class="container">
+<p>Self-sustainability is a key pillar of the vision and strategic growth of Chhattisgarh Swami Vivekanand Technical University (CSVTU), Bhilai. As the premier Technical University of Chhattisgarh, CSVTU is committed to strengthening its institutional capabilities through the effective utilization of academic, research, technological, and infrastructural resources. The University continuously endeavors to create a self-reliant ecosystem that supports quality education, innovation, research, consultancy, skill development, and industry engagement while reducing dependence on conventional funding sources.</p>
+<p>CSVTU promotes a sustainable model of Technical education by leveraging its expertise in technical education, research, testing, consultancy, capacity-building programs, and industry collaborations. Through initiatives such as continuing education programs, digital governance, sponsored research projects, consultancy services, incubation and entrepreneurship support, and efficient resource management, the University is steadily enhancing its financial and operational sustainability. By fostering academic excellence, innovation, and industry-academia partnerships, the University strives to emerge as a future-ready institution contributing to the technological, economic, and social development of Chhattisgarh and the Nation.</p>
+</div></section>
+<section class="foundations" id="foundations"><div class="container"><div class="section-title"><div class="small">Strategic Framework</div><h2>Foundations of CSVTU Self-Sustainability</h2></div><div class="foundation-grid">
+<article class="foundation-card"><div class="foundation-head"><h3>Resilient Infrastructure and Resource Efficiency</h3></div><div class="foundation-body"><p>CSVTU is continuously strengthening its modern, sustainable, and future-ready infrastructure to support academic excellence and efficient resource utilization. Through smart classrooms, advanced ICT-enabled facilities, state-of-the-art research laboratories, innovation centres, and integrated digital systems, the University is fostering a technology-driven learning and research ecosystem. These initiatives enhance innovation, productivity, and operational efficiency while reinforcing the University's commitment to long-term institutional sustainability and excellence in technical education.</p></div></article>
+<article class="foundation-card"><div class="foundation-head"><h3>Skill Development and Professional Excellence</h3></div><div class="foundation-body"><p>CSVTU promotes skill development, certification programs, and capacity-building initiatives to enhance employability, professional competence, and industry readiness among students, faculty, and professionals. The University also invests in continuous faculty and staff development through training, workshops, research opportunities, leadership programs, and knowledge-sharing practices. By nurturing talent, strengthening institutional capacity, and fostering lifelong learning and innovation, CSVTU builds a skilled workforce and resilient academic ecosystem that supports excellence, growth, and long-term institutional sustainability.</p></div></article>
+<article class="foundation-card"><div class="foundation-head"><h3>Research, Testing and Consultancy Services</h3></div><div class="foundation-body"><p>CSVTU fosters a dynamic ecosystem of research, consultancy, testing, and innovation that advances knowledge creation, technological progress, and institutional self-sustainability. Through its Sponsored Research and Industrial Consultancy (SRIC) Cell, the University undertakes government- and industry-sponsored projects to address contemporary challenges through sustainable and technology-driven solutions. Supported by expert faculty, Scientist and world-class testing facilities, CSVTU provides consultancy and technical services in AI &amp; IT, Civil Engineering, Geotechnical Engineering, Environmental Engineering, Planning, GIS and Geospatial Technologies, and allied disciplines, while promoting innovation, technology transfer, entrepreneurship, and sustainable revenue generation.</p></div></article>
+<article class="foundation-card"><div class="foundation-head"><h3>Innovation, entrepreneurship, and start-up</h3></div><div class="foundation-body"><p>CSVTU promotes innovation, entrepreneurship, and start-up development through its incubation ecosystem, including CSVTU-FORTE, which nurtures innovative ideas into viable enterprises. Strong partnerships with industries, government agencies, professional bodies, and local communities facilitate technology transfer, skill development, and societal outreach initiatives. These initiatives empower students, faculty, and the wider community to engage in innovation, entrepreneurship, and real-world problem-solving, fostering a culture of creativity and collaboration and also strengthen the industry-academia partnerships, enhance employability, and contribute to the University's long-term growth and societal impact.</p></div></article>
+<article class="foundation-card"><div class="foundation-head"><h3>Digital Governance and Administrative Efficiency</h3></div><div class="foundation-body"><p>CSVTU has adopted e-Governance systems, ERP platforms, e-Office solutions, and digital learning technologies to create a transparent, efficient, and technology-driven administrative ecosystem. These initiatives have streamlined institutional processes, improved service delivery, enhanced accountability, optimized resource utilization, reduced operational costs, and minimized paper-based workflows. By integrating digital technologies across academic and administrative functions, the University has strengthened decision-making, operational efficiency, and sustainable resource management, contributing significantly to its long-term institutional sustainability.</p></div></article>
+<article class="foundation-card"><div class="foundation-head"><h3>Environmental Stewardship and Societal Transformation</h3></div><div class="foundation-body"><p>CSVTU promotes a sustainable campus through energy-efficient buildings, rooftop solar systems, water conservation measures, and environmentally responsible practices to Reducing carbon footprints. The University actively contributes to community development through initiatives organized by NSS and Different student Clubs, including tree plantation drives, environmental awareness campaigns, rural development programs, skill-based training, and social outreach activities. These efforts encourage students to participate in nation-building while promoting environmental sustainability, community welfare, and inclusive development. By fostering environmental consciousness and community engagement, the University contributes to creating a greener, healthier, and more sustainable campus and surrounding region.</p></div></article>
+</div></div></section>
+<section class="conclusion" id="conclusion"><div class="container"><div class="section-title"><div class="small" style="color:#ffd36a">Institutional Commitment</div><h2>Journey Toward Self-Reliance</h2></div><p>In conclusion, through strong industry partnerships, CSR initiatives, and government aids/grants with sustainable resource management practices, CSVTU continues to strengthen its journey toward self-reliance. These collective efforts enhance academic excellence, innovation, societal impact, and financial resilience, positioning the University as a sustainable and future-ready institution dedicated to the technological and socio-economic development of the State and the Nation.</p></div></section>
+<footer><div class="container"><strong>Chhattisgarh Swami Vivekanand Technical University (CSVTU), Bhilai</strong><br>Self-Sustainability • Innovation • Excellence • Sustainable Growth</div></footer>
+</body></html>
